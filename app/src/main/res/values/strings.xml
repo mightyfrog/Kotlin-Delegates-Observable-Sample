@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Kotlin Delegates Observable Sample</string>
+    <string name="action_ascending">Ascending</string>
+    <string name="action_descending">Descending</string>
+</resources>

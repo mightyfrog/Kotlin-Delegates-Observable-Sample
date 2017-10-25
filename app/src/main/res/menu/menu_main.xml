@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="org.mightyfrog.android.kotlindelegatesobservablesample.MainActivity">
+
+    <item
+        android:id="@+id/action_ascending"
+        android:icon="@drawable/ic_arrow_upward"
+        android:title="@string/action_ascending"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_descending"
+        android:icon="@drawable/ic_arrow_downward"
+        android:title="@string/action_descending"
+        app:showAsAction="ifRoom" />
+</menu>
