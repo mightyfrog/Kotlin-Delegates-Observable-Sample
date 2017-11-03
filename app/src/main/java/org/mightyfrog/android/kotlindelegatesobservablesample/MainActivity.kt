@@ -18,16 +18,16 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
 
-    private var order: Order by Delegates.observable<Order>(Order.Ascending()) { _, old, new ->
+    private var orderBy: OrderBy by Delegates.observable<OrderBy>(OrderBy.Ascending()) { _, old, new ->
         if (old == new) {
             return@observable
         }
 
         when (new) {
-            is Order.Ascending -> { // totally contrived
+            is OrderBy.Ascending -> { // totally contrived
                 recyclerView.swapAdapter(NumAdapter((1..100).toList()), false)
             }
-            is Order.Descending -> {
+            is OrderBy.Descending -> {
                 recyclerView.swapAdapter(NumAdapter((1..100).toList().reversed()), false)
             }
         }
@@ -50,8 +50,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_ascending -> order = Order.Ascending() // triggers callback
-            R.id.action_descending -> order = Order.Descending() // triggers callback
+            R.id.action_ascending -> orderBy = OrderBy.Ascending() // triggers callback
+            R.id.action_descending -> orderBy = OrderBy.Descending() // triggers callback
         }
 
         return super.onOptionsItemSelected(item)

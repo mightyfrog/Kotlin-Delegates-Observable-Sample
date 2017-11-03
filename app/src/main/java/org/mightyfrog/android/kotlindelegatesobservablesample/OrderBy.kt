@@ -3,8 +3,8 @@ package org.mightyfrog.android.kotlindelegatesobservablesample
 /**
  * @author Shigehiro Soejima
  */
-sealed class Order {
+sealed class OrderBy {
 
-    class Ascending : Order()
-    class Descending : Order()
+    class Ascending : OrderBy()
+    class Descending : OrderBy()
 }
