@@ -16,8 +16,6 @@ import kotlin.properties.Delegates
  */
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var recyclerView: RecyclerView
-
     private var orderBy: OrderBy by Delegates.observable<OrderBy>(OrderBy.Ascending()) { _, old, new ->
         if (old == new) {
             return@observable
@@ -38,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = NumAdapter((1..100).toList())
     }
