@@ -5,6 +5,6 @@ package org.mightyfrog.android.kotlindelegatesobservablesample
  */
 sealed class OrderBy {
 
-    class Ascending : OrderBy()
-    class Descending : OrderBy()
+    object Ascending : OrderBy()
+    object Descending : OrderBy()
 }

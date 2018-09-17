@@ -3,9 +3,8 @@ package org.mightyfrog.android.kotlindelegatesobservablesample
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.view.*
-import android.widget.TextView
+import android.view.Menu
+import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.properties.Delegates
 
@@ -16,7 +15,7 @@ import kotlin.properties.Delegates
  */
 class MainActivity : AppCompatActivity() {
 
-    private var orderBy: OrderBy by Delegates.observable<OrderBy>(OrderBy.Ascending()) { _, old, new ->
+    private var orderBy: OrderBy by Delegates.observable<OrderBy>(OrderBy.Ascending) { _, old, new ->
         if (old == new) {
             return@observable
         }
@@ -42,33 +41,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
+
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_ascending -> orderBy = OrderBy.Ascending() // triggers callback
-            R.id.action_descending -> orderBy = OrderBy.Descending() // triggers callback
+            R.id.action_ascending -> orderBy = OrderBy.Ascending // triggers callback
+            R.id.action_descending -> orderBy = OrderBy.Descending // triggers callback
         }
 
         return super.onOptionsItemSelected(item)
-    }
-
-    private class NumAdapter(private val list: List<Int>) : RecyclerView.Adapter<NumViewHolder>() {
-
-        override fun getItemCount() = list.size
-
-        override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): NumViewHolder {
-            return NumViewHolder(LayoutInflater.from(parent?.context).inflate(R.layout.view_holder, parent, false))
-        }
-
-        override fun onBindViewHolder(holder: NumViewHolder?, position: Int) {
-            holder?.tv?.text = list[position].toString()
-        }
-    }
-
-    private class NumViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
-        val tv = view.findViewById<TextView>(R.id.text)!!
     }
 }
